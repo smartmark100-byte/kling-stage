@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #12110e;
+  --color-surface: #1c1915;
+  --color-raise: #26221c;
+  --color-fg: #f4efe6;
+  --color-muted: #9a9184;
+  --color-brass: #e0a04a;
+  --color-ink: #1a1208;
+  --color-line: #342f28;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --radius-card: 1.25rem;
+  --aspect-wide: 16 / 9;
+  --aspect-poster: 9 / 16;
+  --aspect-frame: 1 / 1;
+  --spacing-stage: 34rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    min-height: 100%;
+    background:
+      radial-gradient(
+        70rem 32rem at 50% -8rem,
+        color-mix(in srgb, var(--color-brass) 14%, transparent),
+        transparent 62%
+      ),
+      var(--color-bg);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-brass) 38%, transparent);
+    color: var(--color-fg);
+  }
+}
+
+@keyframes kling-slide {
+  from {
+    transform: translateX(-70%);
+  }
+  to {
+    transform: translateX(240%);
+  }
+}
+
+.kling-bar {
+  animation: kling-slide 1.35s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
